@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catur Jawa</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-container">
+    <header class="header">
+      <div class="ornament">✦</div>
+      <h1>Catur Jawa</h1>
+      <p>Dolanan klasik dengan sentuhan budaya Jawa</p>
+      <div class="ornament">✦</div>
+    </header>
+
+    <section class="game-info">
+      <div class="info-box">
+        <span>Giliran</span>
+        <strong id="turnText">Putih</strong>
+      </div>
+      <div class="info-box status">
+        <span>Status</span>
+        <strong id="statusText">Permainan dimulai</strong>
+      </div>
+    </section>
+
+    <main>
+      <div class="board-wrap">
+        <div id="board" class="board" aria-label="Papan catur"></div>
+      </div>
+
+      <div class="controls">
+        <button id="resetBtn" type="button">↻ Mulai Ulang</button>
+      </div>
+    </main>
+
+    <section class="legend">
+      <h2>ꦕꦠꦸꦂ Jawa</h2>
+      <div class="pieces">
+        <div><span>♙</span><p>Pion</p></div>
+        <div><span>♘</span><p>Kuda</p></div>
+        <div><span>♗</span><p>Gajah</p></div>
+        <div><span>♖</span><p>Benteng</p></div>
+        <div><span>♕</span><p>Patih</p></div>
+        <div><span>♔</span><p>Raja</p></div>
+      </div>
+    </section>
+
+    <footer>Catur Jawa • Dolanan Tradisional Nusantara</footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

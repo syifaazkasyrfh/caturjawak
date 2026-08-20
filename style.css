@@ -1,0 +1,242 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --green: #3f5638;
+  --green-2: #71866a;
+  --cream: #f4ecd9;
+  --light: #e8ddc0;
+  --dark: #718765;
+  --brown: #493727;
+  --gold: #c7a158;
+  --text: #263225;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 15% 10%, rgba(255,255,255,.65), transparent 30%),
+    linear-gradient(135deg, #eef1e4 0%, #d8e0cf 45%, #b1bea5 100%);
+  display: flex;
+  justify-content: center;
+  padding: 24px 12px;
+}
+
+.game-container {
+  width: min(920px, 100%);
+  background: rgba(255,255,255,.78);
+  border: 1px solid rgba(255,255,255,.85);
+  border-radius: 28px;
+  padding: 28px;
+  box-shadow: 0 24px 70px rgba(46,57,39,.22);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.header h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(38px, 7vw, 62px);
+  color: #30432e;
+}
+
+.header p {
+  margin-top: 5px;
+  color: #68745f;
+  font-size: 14px;
+}
+
+.ornament {
+  color: var(--gold);
+  font-size: 20px;
+  margin: 4px;
+}
+
+.game-info {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.info-box {
+  min-width: 155px;
+  padding: 11px 16px;
+  background: #faf7ec;
+  border: 1px solid #ddd2b8;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.info-box span {
+  display: block;
+  color: #8a816e;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.info-box strong {
+  display: block;
+  margin-top: 3px;
+  color: #3c4e37;
+  font-size: 14px;
+}
+
+.board-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.board {
+  width: min(88vw, 650px);
+  aspect-ratio: 1;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  border: 8px solid var(--brown);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 18px 35px rgba(49,38,25,.30);
+  touch-action: manipulation;
+}
+
+.square {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition: filter .12s ease;
+}
+
+.square.light { background: var(--light); }
+.square.dark { background: var(--dark); }
+
+.square:hover { filter: brightness(1.06); }
+
+.square.selected {
+  box-shadow: inset 0 0 0 5px var(--gold);
+}
+
+.square.possible::after {
+  content: "";
+  position: absolute;
+  width: 23%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(43, 58, 39, .42);
+  z-index: 1;
+}
+
+.square.capture::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 4px solid rgba(173, 69, 47, .75);
+  border-radius: 6px;
+  z-index: 1;
+}
+
+.square.check {
+  background: #c8735d !important;
+}
+
+.piece {
+  position: relative;
+  z-index: 2;
+  font-family: "Segoe UI Symbol", "Noto Sans Symbols 2", "DejaVu Sans", sans-serif;
+  font-size: clamp(30px, 7vw, 58px);
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+.white-piece {
+  color: #fffdf5;
+  text-shadow: 0 2px 2px #453a2e, 0 0 2px #453a2e;
+}
+
+.black-piece {
+  color: #29251f;
+  text-shadow: 0 1px 1px rgba(255,255,255,.35);
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 22px;
+}
+
+#resetBtn {
+  border: 0;
+  background: var(--green);
+  color: white;
+  padding: 13px 28px;
+  border-radius: 50px;
+  font: 600 14px "Segoe UI", Arial, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(45,63,39,.25);
+  transition: transform .2s ease, background .2s ease;
+}
+
+#resetBtn:hover {
+  background: #536d4b;
+  transform: translateY(-2px);
+}
+
+#resetBtn:active { transform: translateY(0); }
+
+.legend {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid #d5d0c1;
+  text-align: center;
+}
+
+.legend h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  color: #52654b;
+  margin-bottom: 16px;
+}
+
+.pieces {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.pieces div { text-align: center; }
+.pieces span {
+  display: block;
+  font-size: 31px;
+  color: #3b4937;
+}
+.pieces p {
+  margin-top: 3px;
+  font-size: 11px;
+  color: #777160;
+}
+
+footer {
+  text-align: center;
+  margin-top: 23px;
+  color: #7a796e;
+  font-size: 11px;
+}
+
+@media (max-width: 600px) {
+  body { padding: 12px 7px; }
+  .game-container { padding: 20px 10px; border-radius: 20px; }
+  .board { border-width: 5px; border-radius: 8px; }
+  .info-box { min-width: 135px; padding: 9px 10px; }
+  .pieces { gap: 14px; }
+}
